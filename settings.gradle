@@ -1,0 +1,4 @@
+
+
+rootProject.name="SmartLibrary_Microservice"
+include("auth_service","book_service","borrow_service", "common","gateway")
