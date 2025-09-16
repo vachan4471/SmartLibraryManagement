@@ -15,5 +15,6 @@ import java.time.LocalDateTime;
 public class ErrorResponse {
     private String message;
     private String errorCode;
+    private String path;
     private LocalDateTime errorAt = LocalDateTime.now();
 }
