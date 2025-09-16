@@ -21,3 +21,12 @@ datasources:
     password: ${POSTGRES_PASSWORD:secret}
     driverClassName: org.postgresql.Driver
 
+jpa:
+  default:
+    entity-scan:
+      packages:
+        - com.example.auth.entity
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
