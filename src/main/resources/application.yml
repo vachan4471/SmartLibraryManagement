@@ -1,0 +1,57 @@
+micronaut:
+  application:
+    name: SmartLibrary_Microservice
+  server:
+    port: ${SERVER_PORT:8080}
+    cors:
+      enabled: true
+      configurations:
+        web:
+          allowedOrigins:
+            - http://localhost:3000   # frontend, can also use "*"
+          allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - OPTIONS
+  cache:
+    caches:
+      bookCache:
+        maximumSize: ${CACHE_BOOKS_MAXSIZE:500}
+        expireAfterWrite: ${CACHE_BOOKS_TTL_SECONDS:300}
+  sessions:
+    enabled: true
+    redis:
+      enabled: false
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB:Demo}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:secret}
+    driverClassName: org.postgresql.Driver
+
+jpa:
+  default:
+    entity-scan:
+      packages: com.example.entity   # VERY IMPORTANT: your entities
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update               # create, update, or create-drop
+
+security:
+    enabled: true
+    token:
+      jwt:
+        enabled: true
+        # Use a strong secret in production; for dev use a random long string
+        signatures:
+          secret:
+            generator:
+              secret: ${SECRETE_KEY}
+      expiration: ${JWT_EXPIRATION_SECONDS:3600}
+endpoints:
+  all:
+    enabled: true

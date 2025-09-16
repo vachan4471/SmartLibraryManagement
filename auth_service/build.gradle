@@ -17,24 +17,45 @@ micronaut {
 }
 
 dependencies {
-    implementation(platform("io.micronaut.platform:micronaut-platform:4.9.3"))
+     implementation(platform("io.micronaut.platform:micronaut-platform:4.9.3"))
 
+    // Micronaut Core
     implementation("io.micronaut:micronaut-runtime")
     implementation("io.micronaut:micronaut-http-server-netty")
-    implementation("io.micronaut:micronaut-context")
+    implementation("io.micronaut.validation:micronaut-validation")
     implementation("io.micronaut:micronaut-jackson-databind")
 
-    annotationProcessor("io.micronaut:micronaut-inject-java")
+    // Micronaut Data (JPA + Hibernate + PostgresSQL)
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
+    implementation("org.postgresql:postgresql:42.7.3")
 
+    // Micronaut Security (JWT)
+    implementation("io.micronaut.security:micronaut-security-jwt")
+    implementation("io.micronaut.security:micronaut-security")
+
+
+    // Lombok
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
-    testCompileOnly("org.projectlombok:lombok")
-    testAnnotationProcessor("org.projectlombok:lombok")
+
+    // MapStruct
+    implementation("org.mapstruct:mapstruct:1.5.5.Final")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
 
     runtimeOnly("ch.qos.logback:logback-classic:1.5.6")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+
+    //implementing the other module
+    implementation(project(":common"))
+
+    //encryption of password to store in table
+    implementation 'org.mindrot:jbcrypt:0.4'
+
+    //validation
+    implementation("io.micronaut.validation:micronaut-validation")
+
 }
 
 application {
