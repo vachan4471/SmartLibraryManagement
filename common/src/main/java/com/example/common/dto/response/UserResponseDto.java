@@ -1,5 +1,6 @@
 package com.example.common.dto.response;
 
+import io.micronaut.core.annotation.Introspected;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 
+@Introspected
 public class UserResponseDto {
     private long userId;
     private String email;

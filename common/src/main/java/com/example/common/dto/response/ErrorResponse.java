@@ -1,5 +1,6 @@
 package com.example.common.dto.response;
 
+import io.micronaut.core.annotation.Introspected;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 
+@Introspected
 public class ErrorResponse {
     private String message;
     private String errorCode;

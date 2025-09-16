@@ -1,0 +1,23 @@
+micronaut:
+  application:
+    name: auth_service
+
+  security:
+    enabled: true
+    token:
+      jwt:
+        enabled: true
+
+    intercept-url-map:
+      - pattern: /auth/**
+        access: isAnonymous()       # allow register/login without JWT
+      - pattern: /**
+        access: isAuthenticated()   # all other endpoints require JWT
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB:Demo}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:secret}
+    driverClassName: org.postgresql.Driver
+

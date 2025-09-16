@@ -1,5 +1,6 @@
 package com.example.common.dto.request;
 
+import io.micronaut.core.annotation.Introspected;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 
+@Introspected
 public class UserRequestDto {
     @NotBlank(message = "first Name is required")
     @Size(max = 100, message = "Name can't be more than 100 letters")
@@ -19,7 +21,7 @@ public class UserRequestDto {
     @Size(max = 100, message = "Name can't be more than 100 letters")
     private String lastName;
 
-    @NotBlank(message = "Date of birth is required")
+    @NotNull(message = "Date of birth is required")
     @Past(message = "Date of birth must be in the past")
     private LocalDateTime dob;
 
@@ -33,7 +35,7 @@ public class UserRequestDto {
     private String username;
 
     @NotBlank(message = "password is required")
-    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*?><])(?=.*[a-z].{8,20})")
+    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*?><])(?=.*[a-z]).{8,20}$")
     private String password;
 
     @NotBlank(message = "Role has to be mentioned")

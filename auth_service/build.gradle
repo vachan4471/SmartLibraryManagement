@@ -47,14 +47,10 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
-    //implementing the other module
-    implementation(project(":common"))
-
-    //encryption of password to store in table
-    implementation 'org.mindrot:jbcrypt:0.4'
-
-    //validation
-    implementation("io.micronaut.validation:micronaut-validation")
+    implementation(project(":common"))//implementing the other module
+    implementation 'org.mindrot:jbcrypt:0.4' //encryption of password to store in table
+    implementation("io.micronaut.validation:micronaut-validation")//validation
+    runtimeOnly("org.yaml:snakeyaml:2.1") //for identifying the .yml
 
 }
 

@@ -1,5 +1,6 @@
 package com.example.common.dto.request;
 
+import io.micronaut.core.annotation.Introspected;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
+@Introspected
 public class LoginRequestDto {
     @NotNull(message = "username is required")
     @Size(max = 100, message = "Username can't be more than 100 letters")

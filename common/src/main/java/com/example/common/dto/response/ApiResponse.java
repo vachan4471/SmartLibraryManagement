@@ -1,5 +1,6 @@
 package com.example.common.dto.response;
 
+import io.micronaut.core.annotation.Introspected;
 import lombok.*;
 
 @AllArgsConstructor
@@ -8,6 +9,7 @@ import lombok.*;
 @Setter
 @ToString
 
+@Introspected
 public class ApiResponse<T> {
     private boolean success;
     private String message;
