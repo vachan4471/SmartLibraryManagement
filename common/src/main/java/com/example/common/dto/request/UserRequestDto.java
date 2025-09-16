@@ -40,7 +40,4 @@ public class UserRequestDto {
 
     @NotBlank(message = "Role has to be mentioned")
     private  String role;
-
-    private LocalDateTime createAt = LocalDateTime.now();
-    private LocalDateTime updatedAt = LocalDateTime.now();
 }
